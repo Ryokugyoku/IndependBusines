@@ -46,7 +46,7 @@ jobs:
           /usr/libexec/PlistBuddy -c "Print :Entitlements:application-identifier" profile.plist
           /usr/libexec/PlistBuddy -c "Print :DeveloperCertificates:0" profile.plist > cert.cer
           openssl x509 -inform DER -in cert.cer -noout -subject -fingerprint
-
+          
       - name: Build iOS Release
         run: dotnet publish -c Release -f:net9.0-ios /p:BuildIpa=true /p:CodesignKey="Apple Distribution: MITSUHIRO MAEDA (Q6P6UR9XJG)"
 
