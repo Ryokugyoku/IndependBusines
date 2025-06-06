@@ -21,6 +21,20 @@ jobs:
 
       - name: Restore NuGet packages
         run: dotnet restore
+        
+      - name: Decode and import certificate
+        run: |
+          echo "${{ secrets.IOS_P12_BASE64 }}" | base64 --decode > certificate.p12
+          security create-keychain -p "" build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p "" build.keychain
+          security import certificate.p12 -k build.keychain -P "${{ secrets.IOS_P12_PASSWORD }}" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple: -s -k "" build.keychain
+    
+      - name: Decode and install provisioning profile
+        run: |
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          echo "${{ secrets.IOS_PROVISION_PROFILE_BASE64 }}" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/profile.mobileprovision
 
       - name: Build iOS Release
         run: dotnet publish -c Release -f:net9.0-ios /p:BuildIpa=true
