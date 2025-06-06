@@ -1,0 +1,101 @@
+# .gitignore for .NET MAUI (Android, iOS, MacCatalyst, Windows)
+
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+TestResults/
+*.user
+*.userosscache
+*.suo
+*.DS_Store
+
+# Visual Studio Code
+.vscode/
+.history/
+
+# Rider
+.idea/
+
+# Visual Studio for Mac
+.vscode/
+*.pidb
+*.userprefs
+
+# Xamarin/MAUI specific
+*.apk
+*.ap_
+*.aab
+*.ipa
+*.app
+*.xcuserstate
+*.xcworkspace
+*.xcuserdata/
+*.xcodeproj/
+*.xcconfig
+*.entitlements
+
+# macOS
+*.DS_Store
+*.AppleDouble
+*.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Provisioning profiles and certificates
+*.p12
+*.mobileprovision
+*.cer
+*.key
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Dotnet CLI
+*.dotnet/
+*.vs/
+global.json
+
+# User secrets
+secrets.json
+
+# Fastlane (if used for CI/CD)
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# Crashlytics/Firebase
+crashlytics-build.properties
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# MAUI Hot Reload
+*.maui*
+
+# End of .gitignore
