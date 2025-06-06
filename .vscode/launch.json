@@ -1,0 +1,70 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET MAUI: MacCatalyst",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-maccatalyst",
+            "program": "${workspaceFolder}/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/IndependBusines.app/Contents/MacOS/IndependBusines",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET MAUI: iOS Simulator (iPhone 16)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "run-ios-iphone16",
+            "program": "dotnet",
+            "args": [
+                "msbuild",
+                "-t:Run",
+                "/p:TargetFramework=net9.0-ios",
+                "/p:_DeviceName=:v2:udid=5392406A-A4CE-4812-99D0-43F325B507BC"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET MAUI: iOS Simulator(Ipad)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "run-ios",
+            "program": "dotnet",
+            "args": [
+                "msbuild",
+                "-t:Run",
+                "/p:TargetFramework=net9.0-ios"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET MAUI: Android",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-android",
+            "program": "dotnet",
+            "args": [
+                "run",
+                "-f:net9.0-android"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET MAUI: Windows",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-windows",
+            "program": "dotnet",
+            "args": [
+                "run",
+                "-f:net9.0-windows10.0.19041.0"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false
+        }
+    ]
+}
