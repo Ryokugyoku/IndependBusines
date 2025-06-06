@@ -12,37 +12,37 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = IndependBusines
-build_property.ProjectDir = /Users/ryokugyoku/Documents/Sources/IndependBusines/
+build_property.ProjectDir = /Users/ryokugyoku/Documents/書類 - MaedaのMacBook Pro/Sources/IndependBusines/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[/Users/ryokugyoku/Documents/Sources/IndependBusines/App.xaml]
+[/Users/ryokugyoku/Documents/書類 - MaedaのMacBook Pro/Sources/IndependBusines/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = IndependBusines.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
-[/Users/ryokugyoku/Documents/Sources/IndependBusines/AppShell.xaml]
+[/Users/ryokugyoku/Documents/書類 - MaedaのMacBook Pro/Sources/IndependBusines/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = IndependBusines.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[/Users/ryokugyoku/Documents/Sources/IndependBusines/MainPage.xaml]
+[/Users/ryokugyoku/Documents/書類 - MaedaのMacBook Pro/Sources/IndependBusines/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = IndependBusines.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 
-[/Users/ryokugyoku/Documents/Sources/IndependBusines/Resources/Styles/Colors.xaml]
+[/Users/ryokugyoku/Documents/書類 - MaedaのMacBook Pro/Sources/IndependBusines/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = IndependBusines.Resources.Styles.Colors.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Colors.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Colors.xaml
 
-[/Users/ryokugyoku/Documents/Sources/IndependBusines/Resources/Styles/Styles.xaml]
+[/Users/ryokugyoku/Documents/書類 - MaedaのMacBook Pro/Sources/IndependBusines/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = IndependBusines.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Styles.xaml

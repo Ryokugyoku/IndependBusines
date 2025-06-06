@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/ryokugyoku/Documents/Sources/IndependBusines/IndependBusines.csproj": {}
+    "/Users/ryokugyoku/Documents/書類 - MaedaのMacBook Pro/Sources/IndependBusines/IndependBusines.csproj": {}
   },
   "projects": {
-    "/Users/ryokugyoku/Documents/Sources/IndependBusines/IndependBusines.csproj": {
+    "/Users/ryokugyoku/Documents/書類 - MaedaのMacBook Pro/Sources/IndependBusines/IndependBusines.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ryokugyoku/Documents/Sources/IndependBusines/IndependBusines.csproj",
+        "projectUniqueName": "/Users/ryokugyoku/Documents/書類 - MaedaのMacBook Pro/Sources/IndependBusines/IndependBusines.csproj",
         "projectName": "IndependBusines",
-        "projectPath": "/Users/ryokugyoku/Documents/Sources/IndependBusines/IndependBusines.csproj",
+        "projectPath": "/Users/ryokugyoku/Documents/書類 - MaedaのMacBook Pro/Sources/IndependBusines/IndependBusines.csproj",
         "packagesPath": "/Users/ryokugyoku/.nuget/packages/",
-        "outputPath": "/Users/ryokugyoku/Documents/Sources/IndependBusines/obj/",
+        "outputPath": "/Users/ryokugyoku/Documents/書類 - MaedaのMacBook Pro/Sources/IndependBusines/obj/",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "configFilePaths": [
@@ -179,10 +179,13 @@
         "android-x64": {
           "#import": []
         },
-        "iossimulator-arm64": {
+        "ios-arm64": {
           "#import": []
         },
         "maccatalyst-arm64": {
+          "#import": []
+        },
+        "maccatalyst-x64": {
           "#import": []
         }
       }
