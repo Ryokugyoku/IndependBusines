@@ -1,0 +1,38 @@
+name: Build and Upload to TestFlight
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Install MAUI Workload
+        run: dotnet workload install maui
+
+      - name: Restore NuGet packages
+        run: dotnet restore
+
+      - name: Build iOS Release
+        run: dotnet publish -c Release -f:net9.0-ios /p:BuildIpa=true
+
+      - name: Install fastlane
+        run: sudo gem install fastlane
+
+      - name: Upload to TestFlight
+        env:
+          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}
+        run: |
+          cd ${{ github.workspace }}
+          fastlane pilot upload --ipa bin/Release/net9.0-ios/ios-arm64/publish/IndependBusines.ipa
