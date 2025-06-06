@@ -37,6 +37,9 @@ jobs:
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           echo "${{ secrets.IOS_PROVISION_PROFILE_BASE64 }}" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/profile.mobileprovision
 
+      - name: Check imported identities
+        run: security find-identity -v -p codesigning build.keychain
+      
       - name: Build iOS Release
         run: dotnet publish -c Release -f:net9.0-ios /p:BuildIpa=true
 
