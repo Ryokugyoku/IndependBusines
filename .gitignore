@@ -99,3 +99,4 @@ _ReSharper*/
 *.maui*
 
 # End of .gitignore
+.fake
