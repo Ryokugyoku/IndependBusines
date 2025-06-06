@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-14
 
     steps:
       - uses: actions/checkout@v4
@@ -39,7 +39,14 @@ jobs:
 
       - name: Check imported identities
         run: security find-identity -v -p codesigning build.keychain
-      
+
+      - name: Show Provisioning Profile Info
+        run: |
+          security cms -D -i ~/Library/MobileDevice/Provisioning\ Profiles/profile.mobileprovision > profile.plist
+          /usr/libexec/PlistBuddy -c "Print :Entitlements:application-identifier" profile.plist
+          /usr/libexec/PlistBuddy -c "Print :DeveloperCertificates:0" profile.plist > cert.cer
+          openssl x509 -inform DER -in cert.cer -noout -subject -fingerprint
+
       - name: Build iOS Release
         run: dotnet publish -c Release -f:net9.0-ios /p:BuildIpa=true
 
