@@ -7,7 +7,6 @@ on:
 jobs:
   build:
     runs-on: macos-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -21,7 +20,7 @@ jobs:
 
       - name: Restore NuGet packages
         run: dotnet restore
-        
+
       - name: Decode and import certificate
         run: |
           echo "${{ secrets.IOS_P12_BASE64 }}" | base64 --decode > certificate.p12
@@ -31,7 +30,7 @@ jobs:
           security default-keychain -s build.keychain
           security unlock-keychain -p "" build.keychain
           security set-key-partition-list -S apple-tool:,apple: -s -k "" build.keychain
-    
+
       - name: Decode and install provisioning profile
         run: |
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
@@ -46,7 +45,7 @@ jobs:
           /usr/libexec/PlistBuddy -c "Print :Entitlements:application-identifier" profile.plist
           /usr/libexec/PlistBuddy -c "Print :DeveloperCertificates:0" profile.plist > cert.cer
           openssl x509 -inform DER -in cert.cer -noout -subject -fingerprint
-          
+
       - name: Build iOS Release
         run: dotnet publish -c Release -f:net9.0-ios /p:BuildIpa=true /p:CodesignKey="Apple Distribution: MITSUHIRO MAEDA (Q6P6UR9XJG)"
 
