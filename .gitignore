@@ -1,8 +1,8 @@
 # .gitignore for .NET MAUI (Android, iOS, MacCatalyst, Windows)
 
 # Build results
-bin/*
-obj/*
+/bin/*
+/obj/*
 [Bb]uild/
 [Ll]og/
 TestResults/
