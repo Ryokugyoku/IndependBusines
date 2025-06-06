@@ -47,7 +47,8 @@ jobs:
           openssl x509 -inform DER -in cert.cer -noout -subject -fingerprint
 
       - name: Build iOS Release
-        run: dotnet publish -c Release -f:net9.0-ios /p:BuildIpa=true /p:CodesignKey='Apple Distribution: MITSUHIRO MAEDA (Q6P6UR9XJG)'
+        run: |
+          dotnet publish -c Release -f:net9.0-ios /p:BuildIpa=true /p:CodesignKey='Apple Distribution: MITSUHIRO MAEDA (Q6P6UR9XJG)'
 
       - name: Install fastlane
         run: sudo gem install fastlane
