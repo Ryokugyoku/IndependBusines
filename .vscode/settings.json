@@ -1,0 +1,12 @@
+// settings.json
+{
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "editor.parameterHints.enabled": true,
+  "omnisharp.enableEditorConfigSupport": true,
+  "dotnet.server.useOmnisharp": true,
+  "FSharp.suggestGitignore": false
+}
