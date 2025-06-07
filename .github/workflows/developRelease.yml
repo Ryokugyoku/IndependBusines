@@ -49,6 +49,11 @@ jobs:
           /usr/libexec/PlistBuddy -c "Print :DeveloperCertificates:0" profile.plist > cert.cer
           openssl x509 -inform DER -in cert.cer -noout -subject -fingerprint
 
+      - name: Set build number (with datetime)
+        run: |
+          BUILD_NUMBER=$(date +"%Y%m%d%H%M")
+          sed -i '' "s|<ApplicationVersion>.*</ApplicationVersion>|<ApplicationVersion>${BUILD_NUMBER}</ApplicationVersion>|" IndependBusines.csproj
+
       - name: Build iOS Release
         run: |
           dotnet publish -c Release -f:net9.0-ios /p:BuildIpa=true /p:CodesignKey='Apple Distribution: MITSUHIRO MAEDA (Q6P6UR9XJG)'
