@@ -57,8 +57,8 @@ jobs:
         run: sudo gem install fastlane
 
       - name: Create API key file
-        run: echo "${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}" > api_key.json
-
+        run: echo '${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}' > api_key.json
+        
       - name: Upload to TestFlight
         run: |
           cd ${{ github.workspace }}
