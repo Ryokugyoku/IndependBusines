@@ -56,11 +56,10 @@ jobs:
       - name: Install fastlane
         run: sudo gem install fastlane
 
+      - name: Create API key file
+        run: echo "${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}" > api_key.json
+
       - name: Upload to TestFlight
-        env:
-          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
-          APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
-          APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}
         run: |
           cd ${{ github.workspace }}
-          fastlane pilot upload --ipa bin/Release/net9.0-ios/ios-arm64/publish/IndependBusines.ipa
+          fastlane pilot upload --ipa bin/Release/net9.0-ios/ios-arm64/publish/IndependBusines.ipa --api_key_path api_key.json
