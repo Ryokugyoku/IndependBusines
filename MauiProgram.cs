@@ -15,6 +15,7 @@ namespace IndependBusines;
 /// ・デフォルトカルチャは「en」（英語）
 /// ・RequestLocalizationOptions でカルチャ設定を構成し、サービスとして登録する
 /// ・デバッグビルド時はデバッグロギングを有効化する
+/// ・アプリケーションのローカライズサービスをシングルトンとして登録する
 /// </remarks>
 public static class MauiProgram
 {
@@ -30,10 +31,6 @@ public static class MauiProgram
 			});
 
 		var supportedCultures = new[] { "en", "ja", "es" };
-		var localizationOptions = new RequestLocalizationOptions()
-			.SetDefaultCulture("en")
-			.AddSupportedCultures(supportedCultures)
-			.AddSupportedUICultures(supportedCultures);
 
 		builder.Services.Configure<RequestLocalizationOptions>(options =>
 		{
@@ -41,6 +38,9 @@ public static class MauiProgram
 				   .AddSupportedCultures(supportedCultures)
 				   .AddSupportedUICultures(supportedCultures);
 		});
+
+		builder.Services.AddLocalization();
+		builder.Services.AddSingleton<Localize.LocalizationService>();
 
 #if DEBUG
 		builder.Logging.AddDebug();
