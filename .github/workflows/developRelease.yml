@@ -6,10 +6,12 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
-
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
+
+      - name: Select Xcode 16.4
+        run: sudo xcode-select -s /Applications/Xcode_16.4.app
 
       - name: Set up .NET
         uses: actions/setup-dotnet@v4
@@ -21,32 +23,43 @@ jobs:
 
       - name: Restore NuGet packages
         run: dotnet restore
-        
+
       - name: Decode and import certificate
         run: |
           echo "${{ secrets.IOS_P12_BASE64 }}" | base64 --decode > certificate.p12
           security create-keychain -p "" build.keychain
+          security import certificate.p12 -k build.keychain -P "${{ secrets.IOS_P12_PASSWORD }}" -T /usr/bin/codesign
+          security list-keychains -s build.keychain
           security default-keychain -s build.keychain
           security unlock-keychain -p "" build.keychain
-          security import certificate.p12 -k build.keychain -P "${{ secrets.IOS_P12_PASSWORD }}" -T /usr/bin/codesign
           security set-key-partition-list -S apple-tool:,apple: -s -k "" build.keychain
-    
+
       - name: Decode and install provisioning profile
         run: |
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           echo "${{ secrets.IOS_PROVISION_PROFILE_BASE64 }}" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/profile.mobileprovision
 
+      - name: Check imported identities
+        run: security find-identity -v -p codesigning build.keychain
+
+      - name: Show Provisioning Profile Info
+        run: |
+          security cms -D -i ~/Library/MobileDevice/Provisioning\ Profiles/profile.mobileprovision > profile.plist
+          /usr/libexec/PlistBuddy -c "Print :Entitlements:application-identifier" profile.plist
+          /usr/libexec/PlistBuddy -c "Print :DeveloperCertificates:0" profile.plist > cert.cer
+          openssl x509 -inform DER -in cert.cer -noout -subject -fingerprint
+
       - name: Build iOS Release
-        run: dotnet publish -c Release -f:net9.0-ios /p:BuildIpa=true
+        run: |
+          dotnet publish -c Release -f:net9.0-ios /p:BuildIpa=true /p:CodesignKey='Apple Distribution: MITSUHIRO MAEDA (Q6P6UR9XJG)'
 
       - name: Install fastlane
         run: sudo gem install fastlane
 
+      - name: Create API key file
+        run: echo '${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}' > api_key.json
+        
       - name: Upload to TestFlight
-        env:
-          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
-          APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
-          APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}
         run: |
           cd ${{ github.workspace }}
-          fastlane pilot upload --ipa bin/Release/net9.0-ios/ios-arm64/publish/IndependBusines.ipa
+          fastlane pilot upload --ipa bin/Release/net9.0-ios/ios-arm64/publish/IndependBusines.ipa --api_key_path api_key.json
