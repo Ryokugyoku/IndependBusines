@@ -3,7 +3,9 @@ using Microsoft.Extensions.Localization;
 namespace IndependBusines.Localize;
 
 /// <summary>
-/// ローカライズサービス
+/// アプリケーションの多言語対応を実現するローカライズサービスクラス。
+/// リソースファイル（Strings.resx等）を利用し、指定したキーに対応するローカライズ済みの文字列を取得できる機能を提供する。
+/// サポートする言語は英語（en）および日本語（ja）とし、将来的な多言語拡張にも対応可能な設計とする。
 /// </summary>
 public class LocalizationService
 {
@@ -15,11 +17,17 @@ public class LocalizationService
         _localizer = factory.Create("Strings", typeof(LocalizationService).Assembly.GetName().Name);
     }
 
-    // Keyごとにプロパティを追加
-    public string AppName => _localizer["AppName"];
-    public string WelcomeMessage => _localizer["WelcomeMessage"];
-    // 他のKeyも同様に追加
 
-    // 任意のKeyを取得する汎用メソッド
+    /// <summary>
+    /// 指定されたキーを使用してローカライズされた文字列を取得します。
+    /// </summary>
+    /// <param name="key">リソースファイルで定義された文字列キー</param>
+    /// <returns>ローカライズされた文字列</returns>
+    /// <example>
+    /// <code>
+    /// var localizer = new LocalizationService(factory);
+    /// string appName = localizer["AppName"];
+    /// </code>
+    /// </example>
     public string this[string key] => _localizer[key];
 }
