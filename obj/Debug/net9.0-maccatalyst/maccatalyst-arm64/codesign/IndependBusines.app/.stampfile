@@ -1,1 +1,0 @@
--v --force --timestamp=none --sign - --entitlements /Users/ryokugyoku/Documents/Sources/IndependBusines/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/Entitlements.xcent /Users/ryokugyoku/Documents/Sources/IndependBusines/bin/Debug/net9.0-maccatalyst/maccatalyst-arm64/IndependBusines.app
