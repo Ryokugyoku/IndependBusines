@@ -14,8 +14,12 @@
         </Style>
         <Style TargetType="Border" x:Key="BorderStyle">
             <Setter Property="BackgroundColor" Value="Gray" />
-            <Setter Property="StrokeShape" Value="16"/>
             <Setter Property="Margin" Value="20"/>
+            <Setter Property="StrokeShape">
+                <Setter.Value>
+                    <RoundRectangleGeometry CornerRadius="16"/>
+                </Setter.Value>
+            </Setter>
         </Style>
     </ContentView.Resources>
     
