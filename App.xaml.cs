@@ -1,5 +1,5 @@
 ﻿namespace IndependBusines;
-
+using Resources.Localize;
 /// <summary>
 /// アプリケーション全体のエントリーポイントとなるクラス。
 /// アプリの初期化処理やリソースの読み込み、メインウィンドウの生成を担当する。
@@ -10,10 +10,6 @@ public partial class App : Application
 	public App()
 	{
 		InitializeComponent();
-	}
-
-	protected override Window CreateWindow(IActivationState? activationState)
-	{
-		return new Window(new AppShell());
+        MainPage = new MainPage();
 	}
 }

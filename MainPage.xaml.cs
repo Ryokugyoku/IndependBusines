@@ -1,6 +1,6 @@
 ﻿namespace IndependBusines;
 
-using IndependBusines.Localize;
+using IndependBusines.Resources.Localize;
 /// <summary>
 /// アプリケーションのメインページを表すクラス。
 /// ユーザーインターフェースの初期化と、カウンターボタンのクリックイベント処理を担当する。
@@ -8,14 +8,11 @@ using IndependBusines.Localize;
 /// </summary>
 public partial class MainPage : ContentPage
 {
-	private readonly LocalizationService _localization;
-
 	int count = 0;
 
-	public MainPage(LocalizationService localizationService)
+	public MainPage()
 	{
 		InitializeComponent();
-		_localization = localizationService;
 	}
 
 	private void OnCounterClicked(object? sender, EventArgs e)
