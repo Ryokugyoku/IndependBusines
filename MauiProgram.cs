@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Builder;
-
+using IndependBusines.Resources.Localize;
 
 namespace IndependBusines;
 
@@ -38,10 +38,6 @@ public static class MauiProgram
 				   .AddSupportedCultures(supportedCultures)
 				   .AddSupportedUICultures(supportedCultures);
 		});
-
-		builder.Services.AddLocalization();
-		builder.Services.AddSingleton<Localize.LocalizationService>();
-
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
